@@ -1,0 +1,22 @@
+{
+    "users" : [
+        {
+            "id" : "unique-1",
+            "name" : "Ömer ALTAN",
+            "salary" : "5000",
+            "department" : "Bilişim"
+          },
+          {
+            "id" : "unique-2",
+            "name" : "Adil ALTAN",
+            "salary" : "2000",
+            "department" : "Pazarlama"
+          },
+          {
+            "id" : "unique-3",
+            "name" : "Elif ALTAN",
+            "salary" : "1000",
+            "department" : "Üretim"
+          }
+    ]
+}

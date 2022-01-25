@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 const UserContext = React.createContext();
 //reducer dispatch'den gelen argümanlara göre işlem yapıp state'i döndürür.
@@ -22,31 +23,19 @@ const reducer = (state, action) => {
 //Provider, Consumer
 export class UserProvider extends Component {
     state = {
-        users: [
-          {
-            id : "unique-1",
-            name : "Ömer ALTAN",
-            salary : "5000",
-            department : "Bilişim"
-          },
-          {
-            id : "unique-2",
-            name : "Adil ALTAN",
-            salary : "2000",
-            department : "Pazarlama"
-          },
-          {
-            id : "unique-3",
-            name : "Elif ALTAN",
-            salary : "1000",
-            department : "Üretim"
-          }
-        ],
+        users: [],
         //Buradaki dispatch vasıtasıyla reducer'a, sayfalardan gelen actionlar (sayfalardaki dispatc ile) gönderilir.
         dispatch : action => {
             this.setState(state => reducer(state, action))
         }
       }
+      componentDidMount = async () => {
+        const response = await axios.get("http://localhost:3004/users");
+        this.setState({
+          users : response.data
+        })
+      }
+      
       render() {
         return(
             <UserContext.Provider value = {this.state}>
